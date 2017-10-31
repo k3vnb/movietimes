@@ -11,3 +11,10 @@ button {
 hr {
   margin-bottom: 3%;
 }
+
+.card {
+  margin: 10px;
+  font-weight: bolder;
+  font-size: 20px;
+  padding: 10px;
+}

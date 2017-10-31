@@ -1,10 +1,10 @@
-function ListItem(title, time, age) {
+function Ticket(title, time, age) {
   this.itemTitle = title;
   this.itemTime = time;
   this.itemAge = age;
 }
 
-ListItem.prototype.ticketPrice = function() {
+Ticket.prototype.ticketPrice = function() {
   console.log("OK");
   var ticketCost = 10;
   if (this.itemTitle == "cheap") {
@@ -27,11 +27,14 @@ ListItem.prototype.ticketPrice = function() {
 //end of Business Logic
 $(document).ready(function(){
   $("#movie-form").submit(function(event){
+    event.preventDefault();
     var movieTitle = $("select#question1").val();
     var movieTime = $("select#question2").val();
     var movieAge = $("select#question3").val();
 
-    var moviePrice = new ListItem(movieTitle, movieTime, movieAge);
-    alert(moviePrice.ticketPrice());
+    var moviePrice = new Ticket(movieTitle, movieTime, movieAge);
+
+    $("#displayTicketPrice").text("$" + moviePrice.ticketPrice() + ".00");
+    // alert(moviePrice.ticketPrice());
   })//end submit fxn
 })//end doc ready fxn
