@@ -14,7 +14,7 @@ Ticket.prototype.ticketPrice = function() {
   }
   if (this.itemTime == "matinee") {
     ticketCost = ticketCost - 3;
-  } else if (this.itemTime == "fullprice") {
+  } else if (this.itemTime == "primetime") {
   }
   if (this.itemAge == "discount") {
     ticketCost = ticketCost - 2;
@@ -31,10 +31,13 @@ $(document).ready(function(){
     var movieTitle = $("select#question1").val();
     var movieTime = $("select#question2").val();
     var movieAge = $("select#question3").val();
-
+    var showName = $("#question1 option:selected").text();
+    var showTime = $("#question2 option:selected").text();
+    var showPrice = $("#question3 option:selected").text();
     var moviePrice = new Ticket(movieTitle, movieTime, movieAge);
 
     $("#displayTicketPrice").text("$" + moviePrice.ticketPrice() + ".00");
+    $(".results").append(showName + " at " + showTime + " for " + showPrice)
     // alert(moviePrice.ticketPrice());
   })//end submit fxn
 })//end doc ready fxn
